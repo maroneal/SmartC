@@ -60,17 +60,17 @@ try:
 			n = 0				 
 			if key == 0x1c:
 		#if GPIO.input(7) == 0:
-			os.system("cd SmartC")
-			os.system("git pull https://github.com/maroneal/SmartC.git")
-			time.sleep(0.5)
-			print("SmartC repository updated.")
-			GPIO.output(4,GPIO.HIGH)
-			time.sleep(0.2)
-			GPIO.output(4,GPIO.LOW)
-			time.sleep(0.2)
-			GPIO.output(4,GPIO.HIGH)
-			time.sleep(0.2)
-			GPIO.output(4,GPIO.LOW)
+				os.system("cd SmartC")
+				os.system("git pull https://github.com/maroneal/SmartC.git")
+				time.sleep(0.5)
+				print("SmartC repository updated.")
+				GPIO.output(4,GPIO.HIGH)
+				time.sleep(0.2)
+				GPIO.output(4,GPIO.LOW)
+				time.sleep(0.2)
+				GPIO.output(4,GPIO.HIGH)
+				time.sleep(0.2)
+				GPIO.output(4,GPIO.LOW)
 		else:
 			n += 1
 			if n > 20000:
