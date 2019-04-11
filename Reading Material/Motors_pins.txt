@@ -1,0 +1,4 @@
+AIN1 : left backward P12
+AIN2 : left forward P13
+BIN1 : right backward P20
+BIN2 : right forward P21
