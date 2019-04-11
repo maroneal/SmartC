@@ -1,6 +1,6 @@
 import RPi.GPIO as GPIO
 import time
-from Motor_Testing import AlphaBot2
+from AlphaBot2 import AlphaBot2
 
 Ab = AlphaBot2()
 

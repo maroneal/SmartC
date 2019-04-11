@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # -*- coding:utf-8 -*-
 import RPi.GPIO as GPIO
-from Motor_Testing import AlphaBot2
+from AlphaBot2 import AlphaBot2
 from neopixel import *
 from TRSensors import TRSensor
 import time
