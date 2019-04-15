@@ -4,6 +4,7 @@ from AlphaBot2 import AlphaBot2
 
 TRIG = 22
 ECHO = 27
+PWM = 50
 
 Ab = AlphaBot2()
 
