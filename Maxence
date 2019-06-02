@@ -1,11 +1,10 @@
-Projecting solution
 
 
 import RPi.GPIO as GPIO
 import time
 import picamera
-import cv2
-import numpy as np
+#import cv2
+#import numpy as np
 from AlphaBot2 import AlphaBot2
 
 Ab = AlphaBot2()
@@ -105,11 +104,11 @@ try:
 					while key == 0x16:					
 						print("Taking a picture ...")
 						camera.capture('obstacle.jpg')					#Take a picture
-						img= cv2.imread('obstacle.jpg')					#Define the image as a variable
-						img2bw = cv2.cvtColor(img,cv2.COLOR_BGR2GRAY)	#Convert the original picture into a B&W picture
-						retval, threshold = cv2.threshold(img2bw,10,255,cv2.THRESH_BINARY)		#Define the B&W threshold
-						cv2.imshow('Original',img)						#Display original picture
-						cv2.imshow('Black & White',img2bw)				#Display B&W picture
+						# img= cv2.imread('obstacle.jpg')					#Define the image as a variable
+						# img2bw = cv2.cvtColor(img,cv2.COLOR_BGR2GRAY)	#Convert the original picture into a B&W picture
+						# retval, threshold = cv2.threshold(img2bw,10,255,cv2.THRESH_BINARY)		#Define the B&W threshold
+						# cv2.imshow('Original',img)						#Display original picture
+						# cv2.imshow('Black & White',img2bw)				#Display B&W picture
 						time.sleep(2)									#Every 2 seconds					
 					camera.stop_preview()								#Continue taking pictures while other keys aren't pressed
 		else:

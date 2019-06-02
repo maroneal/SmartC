@@ -34,7 +34,7 @@ def dist():
     while GPIO.input(ECHO):
         pass
     t2 = time.time()
-    return (t2-t1)*34000/2
+    return((t2-t1)*34000/2)
 
 def stop_servos():
     kit.servo[0].set_pulse_width_range(0,0)
@@ -44,13 +44,13 @@ def stop_servos():
 
 kit.servo[0].angle = 90
 kit.servo[1].angle = 90
+stop_servos()
 try:
     while True:
+        
+        Dist = dist()
         DR_status = GPIO.input(DR)
         DL_status = GPIO.input(DL)
-        Dist = dist()
-        print("Distance = %0.2f cm"%Dist)
-        print(PWM)
         Ab.setPWMA(PWM)
         Ab.setPWMB(PWM)
         if Dist <= 30 and Dist >= 20:

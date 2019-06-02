@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=0.8"><title>AlphaBot</title>
+    
+	<link href="bootstrap.min.css" rel="stylesheet" media="screen"><!-- <link href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet" media="screen">--> 
+    
+	<script src="jquery.js"></script>
+    <script>
+		
+        $(function(){
+			var isTouchDevice = "ontouchstart" in document.documentElement ? true : false;
+			var BUTTON_DOWN   = isTouchDevice ? "touchstart" : "mousedown";
+			var BUTTON_UP     = isTouchDevice ? "touchend"   : "mouseup";
+			
+            $("button").bind(BUTTON_DOWN,function(){
+                $.post("/cmd",this.id,function(data,status){
+                });
+            });
+
+			$("button").bind(BUTTON_UP,function(){
+                $.post("/cmd","stop",function(data,status){
+                });
+            });
+			
+			$('input').change(function() {
+				var speed = this.value;
+				$.post('/cmd', {speed: speed});;
+			});
+        });
+
+	$(function(){
+			$('.range').next().text('40');
+			$('.range').on('input',function(){
+				var $set = $(this).val();
+				$(this).next().text($set);
+			});
+		});
+	
+    </script>
+
+	<style type="text/css">
+		button {
+			margin: 10px 15px 10px 15px;
+			width: 50px;
+			height: 50px;
+		}
+		input {
+			margin: 10px 15px 10px 15px;
+			width: 50px;
+			height: 50px;
+		}
+		img {
+			border-radius: 12px;
+                }
+    </style></head><body>
+<div id="container" class="container" align="center">
+	<div style="margin: auto; width: 60%; height: 40px; line-height: 40px; text-align: center; font-size: 28px; font-family:roboto; color: white; background-color: blue;">
+	AlphaBot Web Control
+	</div><br>
+
+	<script>
+	   var ip_addr = document.location.hostname;
+	   <!-- document.write("<img width=\"320\" height=\"240\" src=\"http://" + ip_addr + ":8080/?action=stream\"></br>"); -->
+	</script>
+	<div align="center"><img width="432" height="324" src="http://192.168.1.112:8080/?action=stream"><br><br></div>
+	<table align="left">
+		<tr>	
+			<td align="center"><b>Motor Control</b></td>	
+		</tr>
+		<tr>
+			<td>
+				<div align="center">
+					<button id="forward" class="btn btn-lg btn-primary glyphicon glyphicon-circle-arrow-up"></button>
+				</div>
+				<div align="center">
+					<button id="turnleft" class="btn btn-lg btn-primary glyphicon glyphicon-circle-arrow-left"></button>
+					<!--<button id='stop' class="btn btn-lg btn-primary glyphicon glyphicon-stop"></button>-->
+					<button id="turnright" class="btn btn-lg btn-primary glyphicon glyphicon-circle-arrow-right"></button>
+				</div>
+				<div align="center">
+					<button id="backward" class="btn btn-lg btn-primary glyphicon glyphicon-circle-arrow-down"></button>
+				</div>
+			</td>
+		</tr>
+		<tr></tr>
+		<tr>
+			<td><br>
+				<div align="center"><b>Speed</b></div>
+				<input min="10" max="100" style="width: 200px;" name="speed" class="range" , step="1" value="40" type="range">
+				<output align="center"></output>
+				</div>
+			</td>
+		</tr>
+	</table>
+	<table align="right">
+	<tbody>	<tr>
+			<td align="center"><b>Servo Control</b></td>
+		</tr>
+		<tr>
+			<td>			
+				<div align="center">
+					<button id="up" accesskey="z" class="btn btn-lg btn-primary glyphicon glyphicon-circle-arrow-up"></button>
+				</div>
+				<div align="center">
+					<button id="left" class="btn btn-lg btn-primary glyphicon glyphicon-circle-arrow-left"></button>
+					<button id="right" class="btn btn-lg btn-primary glyphicon glyphicon-circle-arrow-right"></button>		
+				</div>
+				<div align="center">
+					<button id="down" class="btn btn-lg btn-primary glyphicon glyphicon-circle-arrow-down"></button>
+				</div>
+			</td>
+		</tr>
+		<tr>
+			<td><br>
+				<div align="center">
+					<button id="exit" class="btn btn-lg btn-primary glyphicon glyphicon-stop"></button>
+					<button id='play' class="btn btn-lg btn-primary glyphicon glyphicon-play"></button>
+				</div>
+			</td>
+		</tr>
+	</tbody>
+	</table>
+				
+		
+		
+</div>
+</body></html>
